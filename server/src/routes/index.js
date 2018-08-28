@@ -9,7 +9,10 @@ let router = Router();
 
 router.use('/auth', authRouter);
 
-router.route('*')
+// only POST, PUT, AND DELETE routes blocked by middleware (checking for authentication)
+// GET requests are allowed to make requests without authentication (deny of GET requests can be added)
+router
+    .route('*')
     .post(tokenMiddleware, isLoggedIn)
     .put(tokenMiddleware, isLoggedIn)
     .delete(tokenMiddleware, isLoggedIn);

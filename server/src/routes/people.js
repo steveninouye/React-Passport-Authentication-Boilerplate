@@ -1,5 +1,6 @@
 import { Router } from 'express';
 
+// fake database
 let people = [
     {
         name: 'Jackson',

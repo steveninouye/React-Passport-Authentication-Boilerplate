@@ -1,7 +1,7 @@
 import uuidv4 from 'uuid/v4';
 import { createCipher, createDecipher } from 'crypto';
 const ALGORITHM = 'aes-256-ctr';
-const SECRET = 'aardvark';
+const SECRET = process.env.ENCRYPT_KEY || 'secret_key'; // secret key that should be handled with process/env
 
 function encode(value) {
     const cipher = createCipher(ALGORITHM, SECRET);

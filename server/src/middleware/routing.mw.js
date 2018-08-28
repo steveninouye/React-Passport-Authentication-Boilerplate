@@ -1,3 +1,5 @@
+// module that will send React app (or index.html) to client if not an api request
+
 import { join } from 'path';
 
 function stateRouting(req, res, next) {
@@ -27,7 +29,7 @@ function isServerAsset(path) {
         return true; // must be a file extension e.g. tree.png
     } else {
         // In all other cases, this is NOT a server asset and must be a front-end asset
-        // should be handled by Angular.
+        // should be handled by React.
         return false;
     }
 }

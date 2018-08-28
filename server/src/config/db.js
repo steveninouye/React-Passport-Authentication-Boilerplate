@@ -1,11 +1,14 @@
+// module sets up connection to database
+// connection can also be establised by mysql.createConnection({ host:  user:  password:  database:  })
+
 import mysql from 'mysql';
 
 let pool = mysql.createPool({
     connectionLimit: 10,
-    host: 'localhost',
-    user: 'exampleUser',
-    password: 'password',
-    database: 'InClassExample'
+    host: 'localhost', // IP of databse
+    user: 'exampleUser', // user that has access to database
+    password: 'password', // password for user.  User must have password identified by plugin "mysql_native_server"
+    database: 'InClassExample' // database name
 });
 
 async function executeQuery(sql, args = []) {
@@ -37,7 +40,8 @@ function generatePlaceholders(args = []) {
     let placeholders = '';
     if (args.length > 0) {
         for (let i = 0; i < args.length; i++) {
-            if (i === args.length - 1) { // if we are on the last argument in the array
+            if (i === args.length - 1) {
+                // if we are on the last argument in the array
                 placeholders += '?';
             } else {
                 placeholders += '?,';

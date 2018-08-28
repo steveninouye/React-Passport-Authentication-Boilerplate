@@ -1,3 +1,9 @@
+// This is a created module to add in order to make
+// queries/inserts/deletes/etc to a MySql Database
+
+
+// imports the database configuration in order to have the right
+// credentials to 
 import { executeQuery, generatePlaceholders } from './config/db';
 
 class Table {

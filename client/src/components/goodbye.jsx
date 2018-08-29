@@ -9,8 +9,8 @@ class GoodbyeWorld extends Component {
     }
 
     componentDidMount() {
-        classService.all()
-        .then(console.log);
+        classService.all() // gets all 'classes' from api
+        .then(console.log);  // then console.log all the classes
     }
 
     render() {

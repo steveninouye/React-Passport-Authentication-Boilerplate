@@ -1,3 +1,6 @@
+// module to make requests to certain api routes on the server
+// routes may be modified
+
 import * as baseService from './base';
 
 function all() {

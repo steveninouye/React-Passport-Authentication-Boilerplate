@@ -1,3 +1,7 @@
+// this is a component that is similar to a loading spinner
+// this uses bootstrap 4 classes
+// see url: https://getbootstrap.com/docs/4.1/components/progress/
+
 import React, { Component } from 'react';
 
 class IndeterminateProgress extends Component {

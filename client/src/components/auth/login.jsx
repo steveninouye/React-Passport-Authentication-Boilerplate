@@ -13,6 +13,8 @@ class Login extends Component {
             feedbackMessage: '',
             checkingLogin: true
         };
+        this.handleChange = this.handleChange.bind(this);
+        this.login = this.login.bind(this);
     }
 
     componentDidMount() {
@@ -38,18 +40,17 @@ class Login extends Component {
         });
     }
 
-    handleEmailChange(value) {
-        this.setState({ email: value });
-    }
-
-    handlePasswordChange(value) {
-        this.setState({ password: value });
+    handleChange(e) {
+        this.setState({[e.target.name]: e.target.value})
     }
 
     render() {
+        // checks from which page where we were directed to the login page from
        const { from } = this.props.location.state || { from: { pathname: '/' } };
        const { redirectToReferrer, checkingLogin } = this.state;
 
+
+       ///////// From here down, depending on state, the page will display one of the 3 options
        if (checkingLogin) {
            return <IndeterminateProgress message="Checking Login Status..." />;
        }
@@ -62,14 +63,14 @@ class Login extends Component {
        return (
            <Fragment>
                 <p>You must be logged in to view this page.</p>
-                <form onSubmit={(e) => this.login(e)}>
+                <form onSubmit={this.login}>
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
-                        <input id="email" className="form-control" type="email" onChange={(e) => this.handleEmailChange(e.target.value)} required /> 
+                        <input id="email" className="form-control" type="email" onChange={this.handleChange} required /> 
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Password</label>
-                        <input id="password" className="form-control" type="password" onChange={(e) => this.handlePasswordChange(e.target.value)} required /> 
+                        <input id="password" className="form-control" type="password" onChange={this.handleChange} required /> 
                     </div>
                     {this.state.feedbackMessage ? (
                         <p>{ this.state.feedbackMessage }</p>

@@ -8,7 +8,6 @@ import Logout from './auth/logout';
 import AuthButton from './auth/authButton';
 
 class Navigation extends Component {
-
     render() {
         return (
             <Router>
@@ -19,11 +18,13 @@ class Navigation extends Component {
                         <Route exact path="/" component={HelloWorld} />
                         <Route path="/login" component={Login} />
                         <Route path="/logout" component={Logout} />
+                        
+                        {/* Private route is a self made componet in /client/src/components/auth/privateRoute */}
                         <PrivateRoute path="/goodbye" component={GoodbyeWorld} />
                     </Switch>
                 </Fragment>
             </Router>
-        )
+        );
     }
 }
 

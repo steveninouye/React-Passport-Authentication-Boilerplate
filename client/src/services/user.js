@@ -6,6 +6,7 @@ function isLoggedIn() {
     return loggedIn;
 }
 
+// checks if user is logged in using the 'me' function below
 function checkLogin() {
     if (loggedIn) {
         return Promise.resolve(true);
@@ -21,6 +22,8 @@ function checkLogin() {
     }
 }
 
+// logs user in
+// server will check if the email and password match
 function login(email, password) {
     return baseService.makeFetch('/api/auth/login', {
         method: 'POST',
@@ -33,7 +36,7 @@ function login(email, password) {
         if (response.ok) {
             return response.json()
             .then((jsonResponse) => {
-                baseService.setAuthToken(jsonResponse.token);
+                baseService.setAuthToken(jsonResponse.token); // sets authToken in localStorage
                 loggedIn = true;
             });
         } else if (response.status === 401) {
@@ -46,7 +49,7 @@ function login(email, password) {
 }
 
 function logout() {
-    baseService.clearAuthToken();
+    baseService.clearAuthToken(); // removes authToken from localStorage
     loggedIn = false;
 }
 
